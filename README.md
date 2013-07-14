@@ -1,4 +1,4 @@
-Repo
+The Daily Deals Magento Extension
 ====
 
-new repo
+in progress, but works!
