@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/** 
+ * @category    Rudoman
+ * @package     Rudoman_Dailydeal
+ * @author      Evgenia Rudoman (evgenia.rudoman@gmail.com)
+ */
+-->
+<config>
+    <modules>
+        <Rudoman_Dailydeal>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Rudoman_Dailydeal>
+    </modules>
+</config>

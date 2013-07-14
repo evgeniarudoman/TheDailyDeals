@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/**
+ * adminhtml.xml
+ * 
+ * @category    Rudoman
+ * @package     Rudoman_Dailydeal
+ * @author      Evgenia Rudoman (evgenia.rudoman@gmail.com)
+ */
+-->
+
+<config>
+    <menu>
+        <dailydeal module="rudoman_dailydeal">
+            <title>Rudoman</title>
+            <sort_order>181</sort_order>
+            <children>
+                <item translate="title" module="rudoman_dailydeal">
+                    <title>Daily Deals</title>
+                    <children>
+                        <manage translate="title" module="rudoman_dailydeal">
+                            <title>Manage</title>
+                            <action>adminhtml/dailydeal_items</action>
+                        </manage>
+                    </children>
+                </item>
+            </children>
+        </dailydeal>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <dailydeal>
+                        <children>
+                            <dailydeal>
+                                <title>Rudoman</title>
+                                <children>
+                                    <item>
+                                        <title>Daily Deals</title>
+                                        <children>
+                                            <manage>
+                                                <title>Manage</title>
+                                            </manage>
+                                        </children>
+                                    </item>
+                                </children>
+                            </dailydeal>
+                        </children>
+                    </dailydeal>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <rudoman_dailydeal translate="title" module="rudoman_dailydeal">
+                                        <title>Daily Deals</title>
+                                        <sort_order>60</sort_order>
+                                    </rudoman_dailydeal>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

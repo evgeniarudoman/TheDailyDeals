@@ -1,0 +1,10 @@
+/*Main Styles*/
+.verticalAlignTop { vertical-align:top; }
+.floatRight { float:right; }
+
+/*Columns in Adminhtml Daily Deals*/
+.colorColumn { border-radius: 2px;display: inline-block;font-size: 10px;text-align: center; }
+.endingSoonDeal { background-color:#fed885;width: 100%; }
+.endedDeal { background-color: #FF9085;width: 100%; }
+.enabledOption { background-color: #90FEC0;width: 100%; }
+.disabledOption { background-color: #DDD;color:#999;width: 100%; }

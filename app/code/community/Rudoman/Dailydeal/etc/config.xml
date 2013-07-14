@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/**
+ * config.xml
+ * 
+ * @category    Rudoman
+ * @package     Rudoman_Dailydeal
+ * @author      Evgenia Rudoman (evgenia.rudoman@gmail.com)
+ */
+-->
+
+<config>
+    <modules>
+        <Rudoman_Dailydeal>
+            <version>0.0.1</version>
+        </Rudoman_Dailydeal>
+    </modules>
+    <global>
+        <blocks>
+            <rudoman_dailydeal>
+                <class>Rudoman_Dailydeal_Block</class>
+            </rudoman_dailydeal>
+        </blocks>
+        <helpers>
+            <rudoman_dailydeal>
+                <class>Rudoman_Dailydeal_Helper</class>
+            </rudoman_dailydeal>
+        </helpers>
+        <models>
+            <rudoman_dailydeal>
+                <class>Rudoman_Dailydeal_Model</class>
+            </rudoman_dailydeal>
+        </models>
+        <resources>
+            <dailydeal_setup>
+                <setup>
+                    <module>Rudoman_Dailydeal</module>
+                    <class>Rudoman_Dailydeal_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </dailydeal_setup>
+            <dailydeal_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </dailydeal_write>
+            <dailydeal_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </dailydeal_read>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <dailydeal>
+                    <file>dailydeal.xml</file>
+                </dailydeal>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <dailydeal>
+                    <file>dailydeal.xml</file>
+                </dailydeal>
+            </updates>
+        </layout>    
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Rudoman_Dailydeal before="Mage_Adminhtml">Rudoman_Dailydeal_Adminhtml</Rudoman_Dailydeal>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <stores>
+        <default>
+            <web>
+                <routers>                               
+                    <dailydeal>
+                        <area>frontend</area>
+                        <class>Rudoman_Dailydeal_Controller_Router</class>
+                    </dailydeal>
+                </routers>
+            </web>
+        </default>
+    </stores>
+    <default>
+        <rudoman_dailydeal>
+            <columns>
+                <list>3</list>
+            </columns>
+        </rudoman_dailydeal>
+    </default>
+</config>

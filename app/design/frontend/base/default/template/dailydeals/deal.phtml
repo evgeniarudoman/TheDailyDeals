@@ -1,0 +1,61 @@
+<?php if (!$product = $this->getDealProduct()): ?>
+    <?php $product = $this->getDailyDealProduct(); ?>
+<?php endif ?>
+<?php if ($product && $difference = Rudoman_Dailydeal_Helper_Time::getDifferenceTime($product->getDealsToDate())): ?>
+    <div class="DailyDeal">
+        <div class="DealCountdown">
+            <p>
+                <?php if ($difference == 1): ?>
+                    <span class="yellow"><?php echo $this->__('Hurry! ') ?></span>
+                <?php endif ?>
+                <?php echo $this->__('Deal ends in') ?>
+            </p>
+            <?php $until = Rudoman_Dailydeal_Helper_Time::getDifferenceTime($product->getDealsToDate(), true); ?>
+            <p class="countdown<?php echo $product->getId() ?>"></p>
+            <?php $timeOffset = Rudoman_Dailydeal_Helper_Time::getTimeOffset(); ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery('.countdown<?php echo $product->getId() ?>').countdown({
+                        until: jQuery.countdown.UTCDate(<?php echo $timeOffset ?>, new Date('<?php echo $until ?>')),
+                        format: 'dhMS',
+                        layout: '{d<}{dn} {dl} {d>}{h<}{hn} {hl} {h>}{m<}{mn} {ml} {m>}{s<}{sn} {sl}{s>}',
+                        onExpiry: function() {
+                            window.location.reload();
+                        }
+                    });
+                });
+            </script>
+        </div>
+        <?php $special_price = $product->getSpecialPrice() ?>
+        <?php if ($special_price && $product->getPrice() != 0): ?>
+            <div class="DiscountDeal">
+                <div class="DealSave">
+                    <p class="SaveLabelDeal"><?php echo __('save') ?></p>
+                    <p class="PercentDeal"><?php echo ceil((($product->getPrice() - $special_price) * 100) / $product->getPrice()) ?><span>%</span></p>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="DealInfo">
+            <img class="DealsImg" src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail', $product->getThumbnail())->resize(1000); ?>" width="132" height="132" alt="<?php echo $product->getName() ?>" />
+            <p class="DealsName"><?php echo $product->getName() ?></p>
+            <div class="DailyDealPrice">
+                <div class="CrossedPrice">
+                    <?php echo $this->getPriceHtml($product, true) ?>
+                </div>
+            </div>
+            <button class="button ViewProduct" onclick="setLocation('<?php echo $product->getProductUrl() ?>')">
+                <span><?php echo Mage::helper('core')->__('View Product') ?></span>
+            </button>        
+            <?php if ($product->isSaleable()): ?>
+                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="AddDealToCart button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+            <?php else: ?>
+                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+            <?php endif; ?>
+
+            <?php $productQty = Rudoman_Dailydeal_Helper_Data::getProductQty($product) ?>
+            <?php if ($productQty): ?>
+                <p class="Hurry"><?php echo Mage::helper('core')->__('Only %s left', $productQty) ?></p>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

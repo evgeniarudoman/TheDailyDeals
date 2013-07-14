@@ -1,0 +1,40 @@
+<?php $product = $this->getProduct(); ?>
+<?php if ($product && $difference = Rudoman_Dailydeal_Helper_Time::getDifferenceTime($product->getDealsToDate()) != 0): ?>
+    <?php $until = Rudoman_Dailydeal_Helper_Time::getDifferenceTime($product->getDealsToDate(), true); ?>
+    <?php $timeOffset = Rudoman_Dailydeal_Helper_Time::getTimeOffset(); ?>
+    <div class="DailyDealProduct">
+        <?php $productQty = Rudoman_Dailydeal_Helper_Data::getProductQty($product) ?>
+        <?php if ($productQty): ?>
+            <p class="Hurry">
+                <?php if ($difference == 1): ?>
+                    <span class="yellow"><?php echo $this->__('Hurry! ') ?></span>
+                <?php endif ?>
+                <?php echo $this->__('Only %s left', $productQty) ?>
+            </p>
+        <?php else: ?>
+            <p class="Hurry">
+                <?php if ($difference == 1): ?>
+                    <span class="yellow"><?php echo $this->__('Hurry! ') ?></span>
+                <?php endif ?>
+                <?php echo $this->__('Ending soon') ?>
+            </p>
+        <?php endif; ?>
+
+        <div class="DealCountdownProduct">
+            <span><?php echo $this->__('The deal expires in:') ?></span>
+            <span class="countdown"></span>
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery('.countdown').countdown({
+                        until: jQuery.countdown.UTCDate(<?php echo $timeOffset ?>, new Date('<?php echo $until ?>')),
+                        format: 'dhMS',
+                        layout: '{d<}{dn} {dl} {d>}{h<}{hn} {hl} {h>}{m<}{mn} {ml} {m>}{s<}{sn} {sl}{s>}',
+                        onExpiry: function() {
+                            window.location.reload();
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </div>
+<?php endif; ?>

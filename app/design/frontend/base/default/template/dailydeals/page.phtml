@@ -1,0 +1,32 @@
+<h4><?php echo Rudoman_Dailydeal_Helper_Data::getDailyDealConfig('title') ?></h4>
+<?php if ($banner = $this->getBanner()): ?>
+    <img width="100%" src="<?php echo $banner ?>" />
+<?php endif ?>
+<p><?php echo Rudoman_Dailydeal_Helper_Data::getDailyDealConfig('description') ?></p>
+<?php //echo $this->getChildHtml() ?>
+<?php $dealsCollection = $this->getAllDeals(); ?>
+<?php if ($dealsCollection): ?>
+    <?php $qtyColumns = (int) Rudoman_Dailydeal_Helper_Data::getDailyDealConfig('list') ?>
+    <?php $qtyColumns = ($qtyColumns < 1) ? 3 : $qtyColumns; ?>
+    <table class="DailyDealPage">
+        <colgroup>
+            <?php for ($i = 1; $i <= $qtyColumns; $i++): ?>
+                <col width="<?php echo round((100 / $qtyColumns), 1) ?>%"/>
+            <?php endfor ?>
+        </colgroup>
+        <tr>
+            <?php for ($i = 1; $i <= $qtyColumns; $i++): ?>
+                <td  width="<?php echo round((100 / $qtyColumns), 1) ?>%"></td>
+            <?php endfor ?>
+        </tr>
+        <?php $count = 1 ?>
+        <?php foreach ($dealsCollection->getItems() as $product): ?>
+            <?php if ($qtyColumns == 1 || $count % $qtyColumns == 1): ?><tr class="newRow"><?php endif; ?>
+                <td<?php echo ($count % $qtyColumns == 0) ? ' class="last"' : '' ?>>
+                    <?php echo $this->getDeal($product, true) ?>
+                </td>
+                <?php if ($qtyColumns == 1 || $count % $qtyColumns == 0): ?></tr><?php endif; ?>
+            <?php $count++ ?>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?>

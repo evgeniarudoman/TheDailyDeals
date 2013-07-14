@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Rudoman
+ * @package     Rudoman_Dailydeal
+ * @author      Evgenia Rudoman (evgenia.rudoman@gmail.com)
+ */
+-->
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/countdown/jquery.countdown.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/dailydeals/styles.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery/jquery-1.9.1.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/countdown/jquery.countdown.js</name>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="rudoman_dailydeal/product" name="daily.deals.block.left" as="daily_deals_block_left" >
+                <action method="setTemplate" ifconfig="rudoman_dailydeal/columns/display">
+                    <template>dailydeals/deal.phtml</template>
+                </action>
+            </block>
+            <action method="unsetCallChild"><child>daily_deals_block_left</child><call>ifEquals</call><if>0</if><key>left</key></action>
+        </reference>
+        <reference name="right">
+            <block type="rudoman_dailydeal/product" name="daily.deals.block.right" as="daily_deals_block_right">
+                <action method="setTemplate" ifconfig="rudoman_dailydeal/columns/display">
+                    <template>dailydeals/deal.phtml</template>
+                </action>
+            </block>
+            <action method="unsetCallChild"><child>daily_deals_block_right</child><call>ifEquals</call><if>0</if><key>right</key></action>
+        </reference>
+    </default>
+    
+    <catalog_product_view translate="label" module="catalog">
+        <reference name="content">
+            <block type="catalog/product_view" name="daily.deal" before="-" >
+                <action method="setTemplate" ifconfig="rudoman_dailydeal/columns/display">
+                    <template>dailydeals/product.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+    
+    <rudoman_dailydeal_index_index translate="label" module="dailydeal">
+        <reference name="root">
+            <action method="setTemplate" ifconfig="rudoman_dailydeal/columns/display">
+                <template helper="rudoman_dailydeal/data/getTemplate" />
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="rudoman_dailydeal/product" name="daily.deals.page" >
+                <action method="setTemplate" ifconfig="rudoman_dailydeal/columns/display">
+                    <template>dailydeals/page.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </rudoman_dailydeal_index_index>
+</layout>

@@ -1,0 +1,56 @@
+.catalog-product-view .col-main { position: relative; }
+
+/*Main Styles*/
+.yellow { color: #fed885; }
+
+/*Daily Deal Product*/
+.DailyDealProduct { color:#FFF;background: none repeat scroll 0 0 #3F3F3F;display: inline-block;position: absolute;right: 33px;top: -30px;z-index: 1;box-shadow: inset 0px 0px 20px 1px #EEEDED;margin:0 auto;height: 30px;width:300px; }
+.DailyDealProduct:before, .DailyDealProduct:after { content: '';position: absolute;top: 0;left: 0;width: 100%;bottom: 0;z-index: -1;background-color: #3F3F3F;border-top-left-radius: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 1px;border-bottom-left-radius: 1px; }
+.DailyDealProduct:before { transform: skew(15deg);-webkit-transform: skew(15deg);-moz-transform: skew(15deg);-o-transform: skew(15deg);left: 28px; }
+.DailyDealProduct:after { transform: skew(-15deg);-webkit-transform: skew(-15deg);-moz-transform: skew(-15deg);-o-transform: skew(-15deg);right: 28px;left: auto; }
+.DailyDealProduct #compact { text-transform: lowercase; }
+.DailyDealProduct p { margin: 0; }
+.DailyDealProduct p.Hurry { line-height: 14px;text-align: right;font-size: 11px; }
+
+/*Daily Deal Mask*/
+.DailyDealPage { width: 100%; }
+.DailyDealPage .DailyDeal .DealsMask { background-color: #1E9899;z-index: 99999;opacity: 0;width: 100%;position: absolute;height: 100%; }
+.DailyDealPage .DailyDeal:hover .DealsMask { opacity: 0.6; }
+.DailyDealPage .DailyDeal .DealsInfo { opacity: 0; }
+.DailyDealPage .DailyDeal:hover .DealsInfo { opacity: 1; }
+.DailyDealPage td { padding: 0 4px 4px 0;/*display: inline-block;*/ }
+.DailyDealPage .last { padding-right: 0; }
+
+/*Daily Deal*/
+.DailyDeal { color: #3F3F3F;border: 1px solid #DDD;text-align: center;width: 100%;position: relative;border-collapse: collapse; }
+.DailyDeal:hover { box-shadow: 0 0 10px 0 #DDD inset; }
+.DailyDeal .DealInfo { height: 100%;padding: 0 10% 10px 10%;width: 80%; }
+.DailyDeal .DealsName { height: 36px;overflow: hidden;word-wrap: break-word; }
+.DailyDeal .DealsImg { margin: 10px 0;width: 100%;height: auto;max-width: 150px; }
+.DailyDeal .ViewProduct { text-decoration: none;width: 49%; }
+.DailyDeal .ViewProduct span { background-color: #736766;border: 1px solid #3F3F3F;padding: 0;font-size: 12px;white-space: normal; }
+.DailyDeal .AddDealToCart { width: 49%; }
+.DailyDeal .AddDealToCart span { border: 1px solid #3F3F3F;background: #1E9899;padding: 0;font-size: 12px;white-space: normal; }
+.DailyDeal .DailyDealPrice { min-height: 60px; }
+.DailyDeal .DailyDealPrice p { margin: 0;padding: 0; }
+.DailyDeal .DailyDealPrice .DealsPrice { font-size: 16px;margin-bottom: -4px; }
+.DailyDeal .DailyDealPrice .CrossedPrice .price-box { display: inline-block; }
+.DailyDeal .DailyDealPrice .CrossedPrice .price-box span { color: #2f2f2f;font-weight: normal;font-size: 11px; }
+.DailyDeal .DailyDealPrice .CrossedPrice .price-box .price { white-space: normal !important; }
+.DailyDeal .DailyDealPrice .CrossedPrice .price-box .special-price span,
+.DailyDeal .DailyDealPrice .CrossedPrice .price-box .regular-price span { font-weight: bold;font-size: 13px; }
+.DailyDeal .DiscountDeal { width: 40px;height: 0;border-top: 30px solid #3F3F3F;border-right: 40px solid transparent;position: absolute;top: 34px; }
+.DailyDeal .DiscountDeal p { line-height: 0px;margin-left: 4px;color: #1E9899; }
+.DailyDeal .DiscountDeal .DealSave { margin-top: -24px;width: 46px; }
+.DailyDeal .DiscountDeal .DealSave .SaveLabelDeal { font-size: 10px; }
+.DailyDeal .DiscountDeal .DealSave .PercentDeal { font-size: 16px;margin-left: 8px;color: #fed885; }
+.DailyDeal .DiscountDeal .DealSave .PercentDeal span { font-size: 10px;display: inline-block;margin-bottom: 6px; }
+.DailyDeal .Hurry { font-size: 10px;text-align: right;margin-right: 2px;margin-bottom: 0; }
+
+/*Deal Countdown*/
+.DealCountdown { color:#FFF;background: none repeat scroll 0 0 #3F3F3F;display: inline-block;z-index: 99999;min-height: 34px;width:100%; }
+.DealCountdown p { margin: 0;font-size: 11px; }
+.DealCountdownProduct {  } 
+
+/*Daily Deals Page*/
+.DailyDealPage .DailyDeal { /*width: 234px;min-height: 280px;*/min-height: 338px; }
